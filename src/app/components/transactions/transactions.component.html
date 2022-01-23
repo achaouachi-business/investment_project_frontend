@@ -1,0 +1,81 @@
+<div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+            <div class="col-lg-12 bg_color">
+                <div class="p-5">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Ajouter une transaction</h1>
+                    </div>
+                    <form class="user" #userForm='ngForm'>
+                        <div *ngIf="successAjout==1" class="alert alert-success error-control-user">
+                            La transaction est ajoutée avec succès.
+                        </div>
+                        <div class="form-group row">
+                            <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                    placeholder="description" name="description" [(ngModel)] ="transaction.description" 
+                                    #nom ='ngModel' required>
+                                    
+                        </div>
+                        <div *ngIf="transaction.description==null && actifError " class="alert alert-danger error-control-user">
+                            Définissez la description
+                        </div> 
+                        
+                        <div class="form-group row">
+                            <input type="number" class="form-control form-control-user" id="exampleFirstName"
+                                    placeholder="unitPrice" name="unitPrice" [(ngModel)] ="transaction.unitPrice" 
+                                    min="1" #nom ='ngModel' required>
+                                    
+                        </div>
+                        <div *ngIf="transaction.unitPrice==null && actifError " class="alert alert-danger error-control-user">
+                            Définissez le prix unitaire
+                        </div> 
+                        
+                        
+                        <div class="form-group row">
+                            <input type="number" class="form-control form-control-user" id="exampleFirstName"
+                                    placeholder="quantity" name="quantity" [(ngModel)] ="transaction.quantity" 
+                                    min="1"
+                                    #nom ='ngModel' required>
+                                    
+                        </div>
+                        <div *ngIf="transaction.unitPrice==null && actifError " class="alert alert-danger error-control-user">
+                            Définissez la quantité
+                        </div> 
+
+                        <!-- ajouter la balise select ici pour selectionner les autorisations à affecter à ce role-->
+                        <div *ngIf="societes != null" class="alert alert-light error-control-user">
+                            Choisissez la société assurant cette transaction.
+                        </div>
+                        <div *ngIf="societes != null" class="form-group row">
+                           
+                            <div *ngIf="choisir==1" class="alert alert-danger error-control-user">
+                                Choisissez la société
+                            </div> <br>
+                               <table class="table ">
+                                   <thead>
+                                       <tr>
+                                           <td>Cochez Une</td>
+                                           <td>Nom</td>
+                                           <td>Prix de l'action</td>
+                                       </tr>
+                                   </thead>
+                                   <tr *ngFor="let societe of societes">
+                                        <td>
+                                            <input type="radio" [value]= "societe.id" name="society" 
+                                                (change) = "onChangeSociete($event)">
+                                        </td>
+                                        <td>{{societe.name}}</td>
+                                        <td>{{societe.actionPrice}}</td>
+                                   </tr>
+                               </table>     
+                        </div>
+                        <a class="btn btn-primary btn-user btn-block" (click) ="ajouter()">
+                            Ajouter
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

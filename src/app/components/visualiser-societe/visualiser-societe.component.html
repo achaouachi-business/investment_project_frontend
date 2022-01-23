@@ -1,0 +1,18 @@
+
+                    <div *ngIf="societes != null" class="form-group row">
+                       
+                        <table class="table ">
+                            <thead>
+                                <tr>
+                                    <td>Nom</td>
+                                    <td>Prix de l'action</td>
+                                </tr>
+                            </thead>
+                            <tr *ngFor="let societe of societes">
+                                 <td> {{societe.name}}</td>
+                                 <td>{{societe.actionPrice}}</td>
+                            </tr>
+                        </table>     
+                 </div>                
+
+

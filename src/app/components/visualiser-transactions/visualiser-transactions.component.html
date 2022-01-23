@@ -1,0 +1,24 @@
+
+                    <div *ngIf="transactions != null" class="form-group row">
+                       
+                        <table class="table ">
+                            <thead>
+                                <tr>
+                                    <td>Designation</td>
+                                    <td>Prix Unitaire</td>
+                                    <td>Quantité</td>
+                                    <td>Date</td>
+                                    <td>Société</td>
+                                </tr>
+                            </thead>
+                            <tr *ngFor="let trans of transactions">
+                                 <td> {{trans.description}}</td>
+                                 <td>{{trans.unitPrice}}</td>
+                                 <td>{{trans.quantity}}</td>
+                                 <td>{{trans.date}}</td>
+                                 <td>{{trans.societe.name}}</td>
+                            </tr>
+                        </table>     
+                 </div>                
+
+
